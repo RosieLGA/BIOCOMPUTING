@@ -56,7 +56,7 @@ lftp -e "set ftp:passive-mode on; ls; exit" ftp.ncbi.nlm.nih.gov
 
 ## This showed me that lftp is functioning, but it was not in interactive mode under Git Bash. I could see the highest order list of folders in this part of ncbi and I could see the genomes directory. I did not have to log in to see any of this. As you can see through my notes, I like writing step-by-step what I do and why. However, me getting what I need from ncbi via Git Bash means I need to get what I can and get right back out. 
 
-# In one go (and I felt like I was grabbing blindly), I navigated into the instructed folder and downloaded the two specified files. 
+## In one go (and I felt like I was grabbing blindly), I navigated into the instructed folder and downloaded the two specified files. 
 
 lftp -e "set ftp:passive-mode on; cd /genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/; get GCF_000005845.2_ASM584v2_genomic.fna.gz; get GCF_000005845.2_ASM584v2_genomic.gff.gz; bye" ftp.ncbi.nlm.nih.gov
 
@@ -83,17 +83,17 @@ chmod go+r GCF_000005845.2_ASM584v2_genomic.gff.gz
 ## First on the HPC: 
 
 md5sum GCF_000005845.2_ASM584v2_genomic.fna.gz
-# c13d459b5caa702ff7e1f26fe44b8ad7
+## c13d459b5caa702ff7e1f26fe44b8ad7
 
 md5sum GCF_000005845.2_ASM584v2_genomic.gff.gz
-# 2238238dd39e11329547d26ab138be41 
+## 2238238dd39e11329547d26ab138be41 
 
 ## And now on my local machine. I will open another Git Bash window so that I do not have to sign out and back into the HPC. I need to navigate to where my downloaded files went. Since they went to my users and users is my parent directory when I open Git Bash, I do not have to navigate to any folders. 
 
 md5sum GCF_000005845.2_ASM584v2_genomic.fna.gz
-# c13d459b5caa702ff7e1f26fe44b8ad7
+## c13d459b5caa702ff7e1f26fe44b8ad7
 md5sum GCF_000005845.2_ASM584v2_genomic.gff.gz
-# 2238238dd39e11329547d26ab138be41
+## 2238238dd39e11329547d26ab138be41
 
 ## I can visually confirm that the hashes match!
 
@@ -108,9 +108,9 @@ nano .bashrc
 source ~/.bashrc
 
 ## Time to interpret these aliases. 
-# alias u='cd ..;clear;pwd;ls -alFh --group-directories-first' This alias first makes me go back one directory. It then clears the screen. Next, it prints my working directory and lists all files in that directory in a long format. It will organize the list by listing directories first. 
-# alias d='cd -;clear;pwd;ls -alFh --group-directories-first' This alias changes my directory to the previous working directory. It then clears the screen. Next, it prints my working directory and lists all files in that directory in a long format. It will organize the list by listing directories first. 
-# alias ll='ls -alFh --group-directories-first' This alias lists all files in my current directory in a long format. It will organize the list by listing directories first.
+## alias u='cd ..;clear;pwd;ls -alFh --group-directories-first' This alias first makes me go back one directory. It then clears the screen. Next, it prints my working directory and lists all files in that directory in a long format. It will organize the list by listing directories first. 
+## alias d='cd -;clear;pwd;ls -alFh --group-directories-first' This alias changes my directory to the previous working directory. It then clears the screen. Next, it prints my working directory and lists all files in that directory in a long format. It will organize the list by listing directories first. 
+## alias ll='ls -alFh --group-directories-first' This alias lists all files in my current directory in a long format. It will organize the list by listing directories first.
 
 ### Reflection
-# I would say that everything was mostly fine (getting into the HPC, making directories, using Filezilla). Really the biggest problem I had was trying to find a way to get the files I needed from ncbi. That alone took up majority of my time with the assignment. That being said, that would be something I would change in that I would have liked to have had a similar tool to ftp or some instructions on how I can get something close to it. 
+## I would say that everything was mostly fine (getting into the HPC, making directories, using Filezilla). Really the biggest problem I had was trying to find a way to get the files I needed from ncbi. That alone took up majority of my time with the assignment. That being said, that would be something I would change in that I would have liked to have had a similar tool to ftp or some instructions on how I can get something close to it. 
