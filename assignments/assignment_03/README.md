@@ -9,6 +9,7 @@ ssh yourID@bora.sciclone.wm.edu
 ## From previous assignments, I have already cloned my BIOCOMPUTING repository straight from GitHub. Currently, my local computer's GitHub repository reflects my HPC BIOCOMPUTING directory. I double-checked this by looking at both my local BIOCOMPUTING and the HPC BIOCOMPUTING in FileZilla. In the HPC, I will set BIOCOMPUTING as my directory and look around. 
 
 cd BIOCOMPUTING
+
 ls
 
 ## My BIOCOMPUTING repository currently has the following highest order subfolders and files: assignments/ groupProject/ lessons/ practice/ quizzes/ README.md
@@ -23,8 +24,11 @@ mkdir -p assignments/assignment_0{1..8}
 ## Now lets make add somethings to the assignment/assignment_03 folder
 
 cd assignments/assignment_03
+
 touch README.md
+
 mkdir data 
+
 ls
 
 
@@ -33,6 +37,7 @@ ls
 ## Download a provided file from a url into assignment_03/data directory
 
 cd data
+
 wget https://gzahn.github.io/data/GCF_000001735.4_TAIR10.1_genomic.fna.gz
 
 ## and uncompress it using gunzip
