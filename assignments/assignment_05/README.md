@@ -1,6 +1,6 @@
-### Rosie George-Ambrocio
-### October 1, 2025
-### Assignment 04
+# Rosie George-Ambrocio
+# October 1, 2025
+# Assignment 04
 
 ## Start off by signing into the hpc. Login into the bora server via ssh
 
@@ -14,7 +14,7 @@ ls
 ## assignments/ has dedicated subfolders for assignment_0{1..8}. lessons/ has dedicated subfolders for lesson_0{1..8}. practice/ has a subfolder for self-created practice (./personal/) and a subfolder for assigned practice (./provided/). quizzes/ has dedicated subfolders for quiz_0{1..8}.
 
 
-### **Task 1** : Setup assignment_05 directory
+# **Task 1** : Setup assignment_05 directory
 ## Set my directory to assignment_05,
 
 ```
@@ -33,7 +33,7 @@ mkdir -p data/{raw,trimmed} log scripts
 touch README.md
 ```
 
-### **Task 2** : Script to download and prepare fastq data
+# **Task 2** : Script to download and prepare fastq data
 
 ## Move into ./scripts and create 01_download_data.sh using nano
 
@@ -68,7 +68,7 @@ rm fastq_examples.tar
 chmod +x 01_download_data.sh
 ```
 
-### **Task 3**: Install and explore the fastp tool
+# **Task 3**: Install and explore the fastp tool
 
 ## Using cd is a fast way to get me back to root. From there, I can set my directory to ./programs
 
@@ -99,15 +99,15 @@ fastp -v
 export PATH=$PATH:/sciclone/home/rlgeorgeambroc/programs
 ```
 
-## back in the programs directory, I looked over what options come with fastp until I felt comfortable enough to continue with the assignment. I also asked ChatGPT to tell me about what I can accomplish using fastp
+## Back in the programs directory, I looked over what options come with fastp until I felt comfortable enough to continue with the assignment. I also asked ChatGPT to tell me about what I can accomplish using fastp
 
 ```
 fastp --help
 ```
 
-### **Task 4**: Script to run fastp
+# **Task 4**: Script to run fastp
 
-## since I am currently in programs, I went back a level then navigated into  ./BIOCOMPUTING/assignments/assignment_05/scripts so that I can create my 02_run_fastp.sh script
+## Since I am currently in programs, I went back a level then navigated into  ./BIOCOMPUTING/assignments/assignment_05/scripts so that I can create my 02_run_fastp.sh script
 
 ```
 cd 
@@ -181,7 +181,7 @@ chmod +x 02_run_fastp.sh
 
 ## I did try out the script on a random *_R1_* data file and I saw a sample name echoed to my screen and a correctly named html in ./log. I also see information about read 1 and read 2 before and after filtering. 
 
-### **Task 5**: 'pipeline.sh' script
+# **Task 5**: 'pipeline.sh' script
 
 ## Now I am going back to my assignment_05 directory to create pipeline.sh
 
@@ -216,7 +216,7 @@ mv ./data/raw/*trimmed* ./data/trimmed
 chmod +x pipeline.sh
 ```
 
-## and lets see what happens when we run it
+## And lets see what happens when we run it
 
 ```
 ./pipeline.sh
@@ -225,14 +225,14 @@ chmod +x pipeline.sh
 ## Success!
 
 
-### **Task 6**: delete all data files and start over
+# **Task 6**: delete all data files and start over
 
 ## To remove the data files (while still in the assignment_05 directory), I can use rm and list the file paths. Using * removes everything in the folder
 ```
 rm data/raw/* data/trimmed/* log/*
 ```
 
-# Time to re-run pipeline.sh
+## Time to re-run pipeline.sh
 
 ```
 ./pipeline.sh
@@ -242,14 +242,14 @@ rm data/raw/* data/trimmed/* log/*
 
 ## Success!!!
 
-### **Task 7**: Document Everything in README.md
+# **Task 7**: Document Everything in README.md
 
 ## I have been doing this as I work through the assignment (like always)
 
 ## **Reflection**:
 
-# I did have a challenge when trying to get my html files to appear. It worked at first when I ran 02_run_fastp.sh outside of pipeline.sh but not when I ran it within pipeline.sh. It turned out my problem was that the HTML report paths included the full relative path from ./data/raw/  instead of just the sample name. I used ChatGTP to spot my problem. I can say that this experience made me a whole lot more aware of file paths and made me a lot more grateful for the table of parameter expansion methods in Lesson 5. I needed to remove a match from the front and from the end to derive the appropriate variable name. 
+### I did have a challenge when trying to get my html files to appear. It worked at first when I ran 02_run_fastp.sh outside of pipeline.sh but not when I ran it within pipeline.sh. It turned out my problem was that the HTML report paths included the full relative path from ./data/raw/  instead of just the sample name. I used ChatGTP to spot my problem. I can say that this experience made me a whole lot more aware of file paths and made me a lot more grateful for the table of parameter expansion methods in Lesson 5. I needed to remove a match from the front and from the end to derive the appropriate variable name. 
 
-# I learned that tools like fastp are extremely helpful, especially if you look over the --help items. I was a bit intimidated when I read over the instructions to Task 4, but I was shocked at how simple setting the fastp parameters actually was. I also learned it takes a lot of patience when building scripts that run other scripts. I was feeling frustrated when my script 01_download_data.sh and script 02_run_fastp.sh worked well on their own but not when I ran the pipeline.sh. It failed once it tried to run 02_run_fastp.sh in a for-loop. It turned out it was a simple fix if I had just recalled how file paths worked. 
+### I learned that tools like fastp are extremely helpful, especially if you look over the --help items. I was a bit intimidated when I read over the instructions to Task 4, but I was shocked at how simple setting the fastp parameters actually was. I also learned it takes a lot of patience when building scripts that run other scripts. I was feeling frustrated when my script 01_download_data.sh and script 02_run_fastp.sh worked well on their own but not when I ran the pipeline.sh. It failed once it tried to run 02_run_fastp.sh in a for-loop. It turned out it was a simple fix if I had just recalled how file paths worked. 
 
-# This assignment also helped me understand why we split this up into two scripts and then called each one with an overall "pipeline." When I encountered my error with the html files disappearing, I knew the problem was not in script 1 since checkpoint I put there (a simple echo of a variable to standard output) appeared properly. I was able to detect that my problem was either in script 2 or in the for-loop I made to run script 2. If I hadn't had done this, I would have been combing through a very long script to see where the issue was. Being able to detect a coding issue more quickly is a major pro. I would say that a possible con is that you would have to cat multiple scripts to your screen to understand what happened in your overline pipeline. This can be a lot if I have a lot of scripts in a single pipeline script. 
+### This assignment also helped me understand why we split this up into two scripts and then called each one with an overall "pipeline." When I encountered my error with the html files disappearing, I knew the problem was not in script 1 since checkpoint I put there (a simple echo of a variable to standard output) appeared properly. I was able to detect that my problem was either in script 2 or in the for-loop I made to run script 2. If I hadn't had done this, I would have been combing through a very long script to see where the issue was. Being able to detect a coding issue more quickly is a major pro. I would say that a possible con is that you would have to cat multiple scripts to your screen to understand what happened in your overline pipeline. This can be a lot if I have a lot of scripts in a single pipeline script. 
