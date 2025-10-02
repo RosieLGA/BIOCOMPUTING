@@ -1,1 +1,7 @@
 assignments/assignment_03/data/*.fna
+assignment/assignment_05/data
+data/
+data/raw/
+data/trimmed/
+*.fastq.gz
+*.trimmed.fastq.gz
