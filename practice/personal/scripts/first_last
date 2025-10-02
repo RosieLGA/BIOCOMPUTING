@@ -1,0 +1,4 @@
+#!/bin/bash
+set -ueo pipefail
+
+cat <(cat ${1} | head -n 1) <(cat ${1} | tail -n 1)
