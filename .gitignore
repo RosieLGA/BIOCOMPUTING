@@ -10,13 +10,17 @@
 *.gz
 *.zip
 
-# Ignore intermediate data for assignment 07
+# Ignore intermediate data for assignments
 assignments/assignment_07/data/clean/*
 assignments/assignment_07/data/raw/*
+assignments/assignment_03/data/*.fna
+assignments/assignment_05/data
+assignments/assignment_07/data/dog_reference/
 
 # Allow SraRunTable.csv to be tracked
 !assignments/assignment_07/data/SraRunTable.csv
 
-# Ignore other assignment data directories
-assignments/assignment_03/data/*.fna
-assignments/assignment_05/data
+# Ignore data for lesson
+lessons/lesson_06/data/
+lessons/lesson_07/data/
+lessons/lesson_07/ref/ncbi_dataset/
