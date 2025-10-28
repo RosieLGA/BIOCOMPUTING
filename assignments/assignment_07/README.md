@@ -1,6 +1,6 @@
-### Rosie George-Ambrocio
-### October 26, 2025
-### Assignment 07
+# Rosie George-Ambrocio
+# October 26, 2025
+# Assignment 07
 
 ## Start off by signing into the hpc. Login into the bora server via ssh
 
@@ -10,14 +10,14 @@ cd BIOCOMPUTING
 ls
 ```
 
-### For this assignment, I prefer using local installs or modules for different programs. Outside of the directory housing my assignment_07 material, I have a folder called ~/programs where I have installed tools and programs added them to my $PATH. This includes:
+# For this assignment, I prefer using local installs or modules for different programs. Outside of the directory housing my assignment_07 material, I have a folder called ~/programs where I have installed tools and programs added them to my $PATH. This includes:
 ## sra-toolkit https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit
 ## datasets https://www.ncbi.nlm.nih.gov/datasets/docs/v2/command-line-tools/download-and-install/
 ## fastp https://github.com/OpenGene/fastp?tab=readme-ov-file#or-download-the-latest-prebuilt-binary-for-linux-users
 ## samtools is available as a module
 ## I will also use bbmap, but that will be with a conda-env instead of a local install
 
-### **Task 1** : Setup assignment_07 director
+# **Task 1** : Setup assignment_07 director
 ## Make directories for assemblies, data, and scripts
 
 ```
@@ -30,7 +30,7 @@ mkdir -p data/{clean,dog_reference,raw} output scripts
 touch README.md
 ```
 
-### **Task 2** : Download Sequence Data
+# **Task 2** : Download Sequence Data
 ## I wanted to look for sequence data about cow guts
 ## Here are my search terms from Oct 25,2025 : (("Bos taurus"[Organism] OR cow[All Fields]) AND gut[All Fields]) AND "bovine gut metagenome"[orgn] AND ("biomol dna"[Properties] AND "library layout paired"[Properties] AND "platform illumina"[Properties] AND "filetype fastq"[Properties])
 ## In the SRA run selector, I filter LibrarySelection to just include RANDOM. Afterwards, I downloaded the Metadata file named SraRunTable.csv
@@ -82,7 +82,7 @@ chmod +x ./scripts/01_download_data.sh
 ```
 
 
-### **Task 3** : Clean up raw reads
+# **Task 3** : Clean up raw reads
 ## Lets make the second script ./scripts/02_clean_read.sh
 
 ```
@@ -110,7 +110,7 @@ chmod +x ./scripts/02_clean_reads.sh
 ```
 
 
-### **Task 4** : Map clean reads to dog genome
+# **Task 4** : Map clean reads to dog genome
 ## for this step, we will use a conda environment
 
 ## Lets make the third script ./scripts/03_map_reads.sh
@@ -169,7 +169,7 @@ chmod +x ./scripts/03_map_reads.sh
 ./scripts/03_map_reads.sh
 ```
 
-### **Task 5** : Extract reads that matched dog genome
+# **Task 5** : Extract reads that matched dog genome
 ## Lets make the add some more to the third script ./scripts/03_map_reads.sh
 
 ```
@@ -228,7 +228,7 @@ done
 echo "Mapping and extracting finished"
 ```
 
-### **Task 6** : Submit your job to SLURM
+# **Task 6** : Submit your job to SLURM
 
 ## Make a pipeline to submit to SLURM
 
@@ -288,11 +288,11 @@ conda deactivate
 sbatch assignment_7_pipeline.slurm
 
 
-### **Task 7** : Inspect your stdout and stderr
+# **Task 7** : Inspect your stdout and stderr
 ## Everything looks good!
 ## I sent these files to ./log instead of ./output to keep things nicely organized
 
-### **Task 8** : Inspect your results
+# **Task 8** : Inspect your results
 ## I made a script to create a summary table of the results. It has a column for accession/sample number, number of quality reads (cleaned reads), and reads that mapped to the dog genome
 
 ```
@@ -343,7 +343,7 @@ SRR094419,114977768,2481
 SRR094424,305806756,992
 SRR094427,104712312,2291
 ```
-### **Task 9** : Document Everything in README.md
+# **Task 9** : Document Everything in README.md
 ## Reflection
-# I had some trouble with my script 03_map_reads.sh when I first tested it with the first 10 reads from each sample. My *_mapped_to_dog.sam files I got when I did bbmap had absolutely nothing in them. When I ran samtools on them, I kept getting errors. It took me a good while to realize the reason I kept getting errors is cause bbmap did not map to anything. My *_mapped_to_dog.sam were blank with no headers. I ended up forcing it make headers by header=t in my bbmap command. 
-# I learned a couple of new things. The biggest thing was to remember to load the environment I wanted to use. samtools was used in my 03_map_reads.sh and my 04_summary_table.sh. I kept forgetting to load it to use 04_summary_table.sh, so I eventually added "module load samtools" to the script itself. As I kept generating new files throughout the assignment, I also learned that directory structure is key. I used "tree" a lot during the assignment and it was crazy to just how much the contents within my project grew. 
+### I had some trouble with my script 03_map_reads.sh when I first tested it with the first 10 reads from each sample. My *_mapped_to_dog.sam files I got when I did bbmap had absolutely nothing in them. When I ran samtools on them, I kept getting errors. It took me a good while to realize the reason I kept getting errors is cause bbmap did not map to anything. My *_mapped_to_dog.sam were blank with no headers. I ended up forcing it make headers by header=t in my bbmap command. 
+### I learned a couple of new things. The biggest thing was to remember to load the environment I wanted to use. samtools was used in my 03_map_reads.sh and my 04_summary_table.sh. I kept forgetting to load it to use 04_summary_table.sh, so I eventually added "module load samtools" to the script itself. As I kept generating new files throughout the assignment, I also learned that directory structure is key. I used "tree" a lot during the assignment and it was crazy to just how much the contents within my project grew. 
