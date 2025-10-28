@@ -1,15 +1,22 @@
-assignments/assignment_03/data/*.fna
-assignment/assignment_05/data
-data/
-data/raw/
-data/trimmed/
+**/data/raw/
+**/data/clean/
+**/data/trimmed/
+*.fna
 *.fastq.gz
 *.fastq
-*.trimmed.fastq.gz
-assignment/assignment_07/data/*
-assignment/assignment_07/data
-*.sam
-*.bam
 *.fq
+*.bam
+*.sam
 *.gz
 *.zip
+
+# Ignore intermediate data for assignment 07
+assignments/assignment_07/data/clean/*
+assignments/assignment_07/data/raw/*
+
+# Allow SraRunTable.csv to be tracked
+!assignments/assignment_07/data/SraRunTable.csv
+
+# Ignore other assignment data directories
+assignments/assignment_03/data/*.fna
+assignments/assignment_05/data
