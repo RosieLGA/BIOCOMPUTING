@@ -1,0 +1,104 @@
+Downloading data
+Archive:  ./data/dog_reference/dog.zip
+  inflating: ./data/dog_reference/README.md  
+  inflating: ./data/dog_reference/ncbi_dataset/data/assembly_data_report.jsonl  
+  inflating: ./data/dog_reference/ncbi_dataset/data/GCF_011100685.1/GCF_011100685.1_UU_Cfam_GSD_1.0_genomic.fna  
+  inflating: ./data/dog_reference/ncbi_dataset/data/dataset_catalog.json  
+  inflating: ./data/dog_reference/md5sum.txt  
+Cleaning reads
+./data/raw/SRR094166_1.fastq
+./data/raw/SRR094166_2.fastq
+./data/clean/SRR094166_1.fastq
+./data/clean/SRR094166_2.fastq
+./data/raw/SRR094403_1.fastq
+./data/raw/SRR094403_2.fastq
+./data/clean/SRR094403_1.fastq
+./data/clean/SRR094403_2.fastq
+./data/raw/SRR094405_1.fastq
+./data/raw/SRR094405_2.fastq
+./data/clean/SRR094405_1.fastq
+./data/clean/SRR094405_2.fastq
+./data/raw/SRR094415_1.fastq
+./data/raw/SRR094415_2.fastq
+./data/clean/SRR094415_1.fastq
+./data/clean/SRR094415_2.fastq
+./data/raw/SRR094416_1.fastq
+./data/raw/SRR094416_2.fastq
+./data/clean/SRR094416_1.fastq
+./data/clean/SRR094416_2.fastq
+./data/raw/SRR094417_1.fastq
+./data/raw/SRR094417_2.fastq
+./data/clean/SRR094417_1.fastq
+./data/clean/SRR094417_2.fastq
+./data/raw/SRR094418_1.fastq
+./data/raw/SRR094418_2.fastq
+./data/clean/SRR094418_1.fastq
+./data/clean/SRR094418_2.fastq
+./data/raw/SRR094419_1.fastq
+./data/raw/SRR094419_2.fastq
+./data/clean/SRR094419_1.fastq
+./data/clean/SRR094419_2.fastq
+./data/raw/SRR094424_1.fastq
+./data/raw/SRR094424_2.fastq
+./data/clean/SRR094424_1.fastq
+./data/clean/SRR094424_2.fastq
+./data/raw/SRR094427_1.fastq
+./data/raw/SRR094427_2.fastq
+./data/clean/SRR094427_1.fastq
+./data/clean/SRR094427_2.fastq
+Mapping reads and extracting matches
+Reference genome: ./data/dog_reference/ncbi_dataset/data/GCF_011100685.1/GCF_011100685.1_UU_Cfam_GSD_1.0_genomic.fna
+Output: ./output
+Logs: ./logs
+Building BBMap index...
+Processing sample: SRR094166
+  FWD: ./data/clean/SRR094166_1.fastq
+  REV: ./data/clean/SRR094166_2.fastq
+  OUT: ./output/SRR094166_mapped_to_dog.sam
+Processing sample: SRR094403
+  FWD: ./data/clean/SRR094403_1.fastq
+  REV: ./data/clean/SRR094403_2.fastq
+  OUT: ./output/SRR094403_mapped_to_dog.sam
+Processing sample: SRR094405
+  FWD: ./data/clean/SRR094405_1.fastq
+  REV: ./data/clean/SRR094405_2.fastq
+  OUT: ./output/SRR094405_mapped_to_dog.sam
+Processing sample: SRR094415
+  FWD: ./data/clean/SRR094415_1.fastq
+  REV: ./data/clean/SRR094415_2.fastq
+  OUT: ./output/SRR094415_mapped_to_dog.sam
+Processing sample: SRR094416
+  FWD: ./data/clean/SRR094416_1.fastq
+  REV: ./data/clean/SRR094416_2.fastq
+  OUT: ./output/SRR094416_mapped_to_dog.sam
+Processing sample: SRR094417
+  FWD: ./data/clean/SRR094417_1.fastq
+  REV: ./data/clean/SRR094417_2.fastq
+  OUT: ./output/SRR094417_mapped_to_dog.sam
+Processing sample: SRR094418
+  FWD: ./data/clean/SRR094418_1.fastq
+  REV: ./data/clean/SRR094418_2.fastq
+  OUT: ./output/SRR094418_mapped_to_dog.sam
+Processing sample: SRR094419
+  FWD: ./data/clean/SRR094419_1.fastq
+  REV: ./data/clean/SRR094419_2.fastq
+  OUT: ./output/SRR094419_mapped_to_dog.sam
+Processing sample: SRR094424
+  FWD: ./data/clean/SRR094424_1.fastq
+  REV: ./data/clean/SRR094424_2.fastq
+  OUT: ./output/SRR094424_mapped_to_dog.sam
+Processing sample: SRR094427
+  FWD: ./data/clean/SRR094427_1.fastq
+  REV: ./data/clean/SRR094427_2.fastq
+  OUT: ./output/SRR094427_mapped_to_dog.sam
+Filtering ./output/SRR094166_mapped_to_dog.sam -> ./output/SRR094166_dog_match.sam
+Filtering ./output/SRR094403_mapped_to_dog.sam -> ./output/SRR094403_dog_match.sam
+Filtering ./output/SRR094405_mapped_to_dog.sam -> ./output/SRR094405_dog_match.sam
+Filtering ./output/SRR094415_mapped_to_dog.sam -> ./output/SRR094415_dog_match.sam
+Filtering ./output/SRR094416_mapped_to_dog.sam -> ./output/SRR094416_dog_match.sam
+Filtering ./output/SRR094417_mapped_to_dog.sam -> ./output/SRR094417_dog_match.sam
+Filtering ./output/SRR094418_mapped_to_dog.sam -> ./output/SRR094418_dog_match.sam
+Filtering ./output/SRR094419_mapped_to_dog.sam -> ./output/SRR094419_dog_match.sam
+Filtering ./output/SRR094424_mapped_to_dog.sam -> ./output/SRR094424_dog_match.sam
+Filtering ./output/SRR094427_mapped_to_dog.sam -> ./output/SRR094427_dog_match.sam
+Mapping and extracting finished

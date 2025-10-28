@@ -1,0 +1,80 @@
+java -ea -Xmx56223m -Xms56223m -cp /sciclone/home/rlgeorgeambroc/.conda/envs/bbmap-env/opt/bbmap-39.37-0/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 ref=./data/dog_reference/ncbi_dataset/data/GCF_011100685.1/GCF_011100685.1_UU_Cfam_GSD_1.0_genomic.fna path=./data/dog_reference/index in1=./data/clean/SRR094417_1.fastq in2=./data/clean/SRR094417_2.fastq out=./output/SRR094417_mapped_to_dog.sam minid=0.95 sam=1 noheader=f overwrite=t
+Executing align2.BBMap [build=1, overwrite=true, fastareadlen=500, ref=./data/dog_reference/ncbi_dataset/data/GCF_011100685.1/GCF_011100685.1_UU_Cfam_GSD_1.0_genomic.fna, path=./data/dog_reference/index, in1=./data/clean/SRR094417_1.fastq, in2=./data/clean/SRR094417_2.fastq, out=./output/SRR094417_mapped_to_dog.sam, minid=0.95, sam=1, noheader=f, overwrite=t]
+Version 39.37
+
+Retaining first best site only for ambiguous mappings.
+Set MINIMUM_ALIGNMENT_SCORE_RATIO to 0.908
+NOTE:	Ignoring reference file because it already appears to have been processed.
+NOTE:	If you wish to regenerate the index, please manually delete ./data/dog_reference/index/ref/genome/1/summary.txt
+Set genome to 1
+
+Loaded Reference:	3.765 seconds.
+Loading index for chunk 1-5, build 1
+Generated Index:	5.639 seconds.
+Analyzed Index:   	8.494 seconds.
+Started output stream:	0.056 seconds.
+Cleared Memory:    	0.151 seconds.
+Processing reads in paired-ended mode.
+Started read stream.
+Started 20 mapping threads.
+Detecting finished threads: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
+
+   ------------------   Results   ------------------   
+
+Genome:                	1
+Key Length:            	13
+Max Indel:             	16000
+Minimum Score Ratio:  	0.9081
+Mapping Mode:         	normal
+Reads Used:           	18118484	(2253234546 bases)
+
+Mapping:          	595.012 seconds.
+Reads/sec:       	30450.64
+kBases/sec:      	3786.88
+
+
+Pairing data:   	pct pairs	num pairs 	pct bases	   num bases
+
+mated pairs:     	  0.0002% 	       20 	  0.0002% 	        3908
+bad pairs:       	  0.0002% 	       16 	  0.0002% 	        4000
+insert size avg: 	  311.65
+
+
+Read 1 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	  0.0011% 	       99 	  0.0010% 	       11751
+unambiguous:     	  0.0006% 	       51 	  0.0005% 	        6100
+ambiguous:       	  0.0005% 	       48 	  0.0005% 	        5651
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	  0.0001% 	       12 	  0.0001% 	        1081
+semiperfect site:	  0.0001% 	       13 	  0.0001% 	        1177
+rescued:         	  0.0001% 	       11
+
+Match Rate:      	      NA 	       NA 	 85.3182% 	       11477
+Error Rate:      	 86.8687% 	       86 	 14.6447% 	        1970
+Sub Rate:        	 86.8687% 	       86 	  1.9774% 	         266
+Del Rate:        	  1.0101% 	        1 	 12.6450% 	        1701
+Ins Rate:        	  1.0101% 	        1 	  0.0223% 	           3
+N Rate:          	  5.0505% 	        5 	  0.0372% 	           5
+
+
+Read 2 data:      	pct reads	num reads 	pct bases	   num bases
+
+mapped:          	  0.0012% 	      109 	  0.0012% 	       13036
+unambiguous:     	  0.0005% 	       46 	  0.0005% 	        5734
+ambiguous:       	  0.0007% 	       63 	  0.0006% 	        7302
+low-Q discards:  	  0.0000% 	        0 	  0.0000% 	           0
+
+perfect best site:	  0.0000% 	        3 	  0.0000% 	         224
+semiperfect site:	  0.0000% 	        3 	  0.0000% 	         224
+rescued:         	  0.0000% 	        3
+
+Match Rate:      	      NA 	       NA 	 97.4072% 	       12698
+Error Rate:      	 97.2477% 	      106 	  2.5084% 	         327
+Sub Rate:        	 97.2477% 	      106 	  2.4854% 	         324
+Del Rate:        	  0.0000% 	        0 	  0.0000% 	           0
+Ins Rate:        	  2.7523% 	        3 	  0.0230% 	           3
+N Rate:          	  8.2569% 	        9 	  0.0844% 	          11
+
+Total time:     	613.267 seconds.

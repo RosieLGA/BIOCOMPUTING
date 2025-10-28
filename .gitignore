@@ -4,4 +4,12 @@ data/
 data/raw/
 data/trimmed/
 *.fastq.gz
+*.fastq
 *.trimmed.fastq.gz
+assignment/assignment_07/data/*
+assignment/assignment_07/data
+*.sam
+*.bam
+*.fq
+*.gz
+*.zip

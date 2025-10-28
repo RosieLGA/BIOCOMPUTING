@@ -1,0 +1,13 @@
+#Summary
+#Generated on	Tue Oct 21 10:44:56 EDT 2025
+#Version	5
+chroms	1
+bases	4657652
+defined	4641652
+undefined	16000
+contigs	1
+scaffolds	1
+interpad	300
+source	/sciclone/home/rlgeorgeambroc/BIOCOMPUTING/lessons/lesson_07/ref/ncbi_dataset/data/GCF_000005845.2/GCF_000005845.2_ASM584v2_genomic.fna
+bytes	4699745
+last modified	1761056784000
