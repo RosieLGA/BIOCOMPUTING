@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
-#SBATCH --time=1-00:00:00 # asking for ten hours since each should only take ~30-60 minutes
+#SBATCH --time=1-00:00:00 
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=rlgeorgeambroc@wm.edu               # change this!
 #SBATCH -o /sciclone/home/rlgeorgeambroc/logs/gpCoverage_%j.out # change this!

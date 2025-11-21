@@ -1,13 +1,13 @@
 #!/bin/bash
-#SBATCH --job-name=REPLACEME_gpAssembly
+#SBATCH --job-name=SRR31654382_gpAssembly
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
 #SBATCH --time=1-00:00:00
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=rlgeorgeambroc@wm.edu               # change this!
-#SBATCH -o /sciclone/home/rlgeorgeambroc/logs/REPLACEME_%j.out # change this!
-#SBATCH -e /sciclone/home/rlgeorgeambroc/logs/REPLACEME_%j.err # change this!
+#SBATCH -o /sciclone/home/rlgeorgeambroc/logs/SRR31654382_%j.out # change this!
+#SBATCH -e /sciclone/home/rlgeorgeambroc/logs/SRR31654382_%j.err # change this!
 
 set -ueo pipefail
 
@@ -20,7 +20,7 @@ CONTIG_DIR="${PROJECT_DIR}/contigs"
 
 mkdir -p $CONTIG_DIR
 
-for fwd in ${QC_DIR}/*REPLACEME*1_qc.fastq.gz
+for fwd in ${QC_DIR}/*SRR31654382*1_qc.fastq.gz
 do
 
 # derive input and output variables 
