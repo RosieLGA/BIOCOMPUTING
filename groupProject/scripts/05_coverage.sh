@@ -7,7 +7,7 @@
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=rlgeorgeambroc@wm.edu               # change this!
 #SBATCH -o /sciclone/home/rlgeorgeambroc/logs/gpCoverage_%j.out # change this!
-#SBATCH -e /sciclone/home/rlgeorgeambro/logs/gpCoverage_%j.err # change this!
+#SBATCH -e /sciclone/home/rlgeorgeambroc/logs/gpCoverage_%j.err # change this!
 
 set -ueo pipefail
 
