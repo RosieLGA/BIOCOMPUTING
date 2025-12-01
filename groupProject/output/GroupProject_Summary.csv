@@ -1,0 +1,5 @@
+Group_Member,00_setup,01_download,02_qc,03_assemble_template,04_annotate_template,05_coverage,outputfile_ending,outputfile_directory
+Rosie,no changes,no changes,no changes,no changes,no changes,added --very-fast flag to bowtie2,*_RGA.with_cov.tsv,~/BIOCOMPUTING/groupProject/output
+Morgan,no changes,no changes,no changes,no changes,changed evalue to 1e-05,no changes,*_MRW.with_cov.tsv,~/BIOCOMPUTING/group_project/output
+Sophie,no changes,no changes,no changes,no changes,--evalue 1e-15,no changes,*_SS.with_cov.tsv,~/BIOCOMPUTING/assignments/assignment_08/output
+Daniel,no changes,no changes,"For fastp: -e 10, -n 3",no changes,no changes,no changes,*_DRA.with_cov.tsv,~/BIOCOMPUTING/assignments/assignment_08/output
