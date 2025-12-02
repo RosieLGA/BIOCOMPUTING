@@ -507,6 +507,7 @@ cd ~/scr10/group_project
 mkdir -p output
 cd annotations
 cp */*_RGA.with_cov.tsv ../output
+cd ..
 cp output/* ~/BIOCOMPUTING/groupProject/output
 cd 
 cd ~/BIOCOMPUTING/groupProject/
