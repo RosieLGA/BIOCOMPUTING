@@ -36,7 +36,7 @@ touch 00_setup.sh 01_download.sh 02_qc.sh 03_assemble_template.sh 04_annotate_te
 
 chmod +x *
 ```
-## 00_set.sh
+# 00_setup.sh
 
 ### Script 00_setup.sh will set up directories in scratch space so that we can put big data files there. The scripts we make in the main groupProject directory will work within the group_project directory in scr10
 
@@ -74,12 +74,12 @@ mkdir -p "${DB_DIR}/prokka"
 ./00_setup.sh
 ```
 
-## 01_download.sh
+# 01_download.sh
 
 ### Script 01_download.sh will download the data for this project and create the database directories for metaphlan and prokka. It will also build the environments.
 
 ### My group used 10 samples from this bioproject on ncbi https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1195999
-## My group did not pick large samples since it would take longer to work with. Instead, we aimed for samples between 1e^09 to 2e^09 and samples that had a spot length of at least 100. 
+### My group did not pick large samples since it would take longer to work with. Instead, we aimed for samples between 1e^09 to 2e^09 and samples that had a spot length of at least 100. 
 
 ### We placed the chosen accession number on groupProject/data
 
@@ -182,7 +182,7 @@ conda deactivate
 sbatch 01_download.sh
 ```
 
-## 02_qc.sh 
+# 02_qc.sh 
 
 ### After that script is complete, I moved on to do quality control with 02_qc.sh
 ### It will trim bases below quality 20 and discard reads shorter than 100 basepairs. It also ensures no reads with “N” bases are kept. All the clean reads are then put in ~/scr10/group_project/data/clean
@@ -221,7 +221,7 @@ for fwd in ${DL_DIR}/*_1.fastq.gz;do rev=${fwd/_1.fastq.gz/_2.fastq.gz};outfwd=$
 # all QC files will be in $QC_DIR and have *_qc.fastq.gz naming pattern
 ```
 
-## 03_assemble_template.sh
+# 03_assemble_template.sh
 
 ### With clean reads now in my ~/scr10/data/clean folder, I moved onto the assembly step of the pipeline. 
 ### Script 03_assemble_template.sh will handle this step. This is a script that will build scripts to run as a slurm job. It will make it so that assembly for each sample will run as its own slurm job. 
@@ -283,7 +283,7 @@ for i in ./scripts/SRR*.slurm; do sbatch ${i}; done
 cd scripts
 ```
 
-## 04_annotate_template.sh
+# 04_annotate_template.sh
 
 ### After all the assembly slurm jobs are done, I moved onto annotating the samples with 04_annotate_template.sh. This script annotates each assembled genome/metagenome using Prokka. The output of this script for each sample will go within its own annotations folder. I made another template script for this since just submitting 1 job that loops through all the samples took way too long and my job failed. 
 
@@ -352,7 +352,7 @@ for i in ./scripts/*_annotate.slurm; do sbatch ${i}; done
 cd scripts
 ```
 
-## 05_coverage.sh
+# 05_coverage.sh
 
 ### And now for the final step were we do coverage. This is the only script where I changed something in my pipeline that is different from the rest of my group. 
 ### I have a summary of what things each group member changed from our pipeline in output in GroupProject_Summary.csv 
@@ -497,7 +497,7 @@ echo "  [done] ${joined}"
 done
 ```
 
-## Output
+# Output
 
 ### Since the output files I want are still in scratch space (scr10), I navigated there to copy the files I want and move them to my groupProject/output directory 
 
@@ -514,7 +514,7 @@ cd ~/BIOCOMPUTING/groupProject/
 ### So now all of my output files are all in one place and ready to push to github!!!
 ### In my output folder, I have all my *_RGA.with_cov.tsv, a summary table for the changes my group members made called GroupProject_Summary.csv, and a summary table for information about each accession number we used called GroupProject_Summary.csv. I am also going to copy my README there so it is easier to find. 
 
-## Optional Main Directory Cleanup
+# Optional Main Directory Cleanup
 
 ### To clean up my scripts folder since I had 2 scripts that made scripts, I moved the resulting scripts into an annotation_slurm folder or an assemble_slurm folder. 
 
