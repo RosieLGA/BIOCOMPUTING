@@ -1,8 +1,8 @@
-### Rosie George-Ambrocio
-### December 2, 2025
-### Group Project
+## Rosie George-Ambrocio
+## December 2, 2025
+## Group Project
 
-## Start off by signing into the hpc. Login into the bora server via ssh
+### Start off by signing into the hpc. Login into the bora server via ssh
 
 ```
 ssh yourID@bora.sciclone.wm.edu
@@ -10,24 +10,24 @@ cd BIOCOMPUTING
 mkdir -p groupProject
 ```
 
-## Set my directory to groupProject
+### Set my directory to groupProject
 
 ```
 cd ./groupProject
 ```
 
-## Make directories for assemblies, data, and scripts
+### Make directories for assemblies, data, and scripts
 
 ```
 mkdir -p output data scripts
 ```
 
-## And make a README.md for documentation
+### And make a README.md for documentation
 
 ```
 touch README.md
 ```
-## and the scripts we will use
+### and the scripts we will use
 
 ```
 cd scripts
@@ -36,8 +36,9 @@ touch 00_setup.sh 01_download.sh 02_qc.sh 03_assemble_template.sh 04_annotate_te
 
 chmod +x *
 ```
+## 00_set.sh
 
-## Script 00_setup.sh will set up directories in scratch space so that we can put big data files there. The scripts we make in the main groupProject directory will work within the group_project directory in scr10
+### Script 00_setup.sh will set up directories in scratch space so that we can put big data files there. The scripts we make in the main groupProject directory will work within the group_project directory in scr10
 
 ```
 nano 00_setup.sh
@@ -67,18 +68,20 @@ mkdir -p "${PROJECT_DIR}/output"
 mkdir -p "${DB_DIR}/metaphlan"
 mkdir -p "${DB_DIR}/prokka"
 ```
-## To run this script, use the following, 
+### To run this script, use the following, 
 
 ```
 ./00_setup.sh
 ```
 
-## Script 01_download.sh will download the data for this project and create the database directories for metaphlan and prokka. It will also build the environments.
+## 01_download.sh
 
-## My group used 10 samples from this bioproject on ncbi https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1195999
+### Script 01_download.sh will download the data for this project and create the database directories for metaphlan and prokka. It will also build the environments.
+
+### My group used 10 samples from this bioproject on ncbi https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1195999
 ## My group did not pick large samples since it would take longer to work with. Instead, we aimed for samples between 1e^09 to 2e^09 and samples that had a spot length of at least 100. 
 
-## We placed the chosen accession number on groupProject/data
+### We placed the chosen accession number on groupProject/data
 
 ```
 cd ..
@@ -86,13 +89,11 @@ cd data
 nano accessions.txt
 ```
 
-## We used the following accession numbers:
-### SRR31654314 SRR31654324 SRR31654305 
-### SRR31654343 SRR31654339 SRR31654352 SRR31654355 
-### SRR31654385 SRR31654365 SRR31654382
-## The first line of accession numbers are samples from young-old people (60-74 years old), the second line is from middle-old people (75-89 years old), and the third line is from long-lived old people (90-99 years old). A table with this information is stored within my /groupProject/output directory as AccessionsTable.csv
-
-
+### We used the following accession numbers:
+#### SRR31654314 SRR31654324 SRR31654305 
+#### SRR31654343 SRR31654339 SRR31654352 SRR31654355 
+#### SRR31654385 SRR31654365 SRR31654382
+### The first line of accession numbers are samples from young-old people (60-74 years old), the second line is from middle-old people (75-89 years old), and the third line is from long-lived old people (90-99 years old). A table with this information is stored within my /groupProject/output directory as AccessionsTable.csv
 
 ```
 cd ..
@@ -175,21 +176,23 @@ export PROKKA_DB=${DB_DIR}/prokka
 prokka --setupdb --dbdir $PROKKA_DB
 conda deactivate
 ```
-## To run it, use the following
+### To run it, use the following
 
 ```
 sbatch 01_download.sh
 ```
 
-## After that script is complete, I moved on to do quality control with 02_qc.sh
-## It will trim bases below quality 20 and discard reads shorter than 100 basepairs. It also ensures no reads with “N” bases are kept. All the clean reads are then put in ~/scr10/group_project/data/clean
-## This script and all the following scripts were ran as slurm jobs. 
+## 02_qc.sh 
+
+### After that script is complete, I moved on to do quality control with 02_qc.sh
+### It will trim bases below quality 20 and discard reads shorter than 100 basepairs. It also ensures no reads with “N” bases are kept. All the clean reads are then put in ~/scr10/group_project/data/clean
+### This script and all the following scripts were ran as slurm jobs. 
 
 ```
 nano 02_qc.sh
 ```
 
-## And here is the 02_qc.sh content
+### And here is the 02_qc.sh content
 
 ```
 #!/bin/bash
@@ -218,15 +221,17 @@ for fwd in ${DL_DIR}/*_1.fastq.gz;do rev=${fwd/_1.fastq.gz/_2.fastq.gz};outfwd=$
 # all QC files will be in $QC_DIR and have *_qc.fastq.gz naming pattern
 ```
 
-## With clean reads now in my ~/scr10/data/clean folder, I moved onto the assembly step of the pipeline. 
-## Script 03_assemble_template.sh will handle this step. This is a script that will build scripts to run as a slurm job. It will make it so that assembly for each sample will run as its own slurm job. 
-## In each resulting script, the quality control reads will undergo metagenome assembly with SPAdes. Each sample will go into its own assembly folder.
+## 03_assemble_template.sh
+
+### With clean reads now in my ~/scr10/data/clean folder, I moved onto the assembly step of the pipeline. 
+### Script 03_assemble_template.sh will handle this step. This is a script that will build scripts to run as a slurm job. It will make it so that assembly for each sample will run as its own slurm job. 
+### In each resulting script, the quality control reads will undergo metagenome assembly with SPAdes. Each sample will go into its own assembly folder.
 
 ```
 nano 03_assemble_template.sh
 ```
 
-## Here is the contents of 03_assemble_template.sh
+### Here is the contents of 03_assemble_template.sh
 
 ```
 #!/bin/bash
@@ -265,28 +270,28 @@ spades.py -1 $fwd -2 $rev -o $outdir -t 20 --meta
 done
 ```
 
-## Rather than just running this script, I will replace the REPLACEMEs in the script with each accession number. I can just do this in the command line.
+### Rather than just running this script, I will replace the REPLACEMEs in the script with each accession number. I can just do this in the command line.
 
 ```
 cd ..
-
 for i in $(cat ./data/accessions.txt); do cat ./scripts/03_assemble_template.sh | sed "s/REPLACEME/${i}/g" >> ./scripts/${i}_assemble.slurm;done
 ```
-## With 10 new slurm jobs now created, I can submit them all to slurm. 
+### With 10 new slurm jobs now created, I can submit them all to slurm. 
 
 ```
 for i in ./scripts/SRR*.slurm; do sbatch ${i}; done
-
 cd scripts
 ```
 
-## After all the assembly slurm jobs are done, I moved onto annotating the samples with 04_annotate_template.sh. This script annotates each assembled genome/metagenome using Prokka. The output of this script for each sample will go within its own annotations folder. I made another template script for this since just submitting 1 job that loops through all the samples took way too long and my job failed. 
+## 04_annotate_template.sh
+
+### After all the assembly slurm jobs are done, I moved onto annotating the samples with 04_annotate_template.sh. This script annotates each assembled genome/metagenome using Prokka. The output of this script for each sample will go within its own annotations folder. I made another template script for this since just submitting 1 job that loops through all the samples took way too long and my job failed. 
 
 ```
 nano 04_annotate_template.sh
 ```
 
-## Here is the content of 04_annotate_template.sh.
+### Here is the content of 04_annotate_template.sh.
 
 ```
 #!/bin/bash
@@ -338,29 +343,29 @@ done
 
 conda deactivate && conda deactivate
 ```
-## Now I can use the template script to make annotate scripts for each sample and submit them.
+### Now I can use the template script to make annotate scripts for each sample and submit them.
 
 ```
 cd ..
-
 for i in $(cat ./data/accessions.txt); do cat ./scripts/04_annotate_template.sh | sed "s/REPLACEME/${i}/g" >> ./scripts/${i}_annotate.slurm;done
-
 for i in ./scripts/*_annotate.slurm; do sbatch ${i}; done
-
 cd scripts
 ```
-## And now for the final step were we do coverage. This is the only script where I changed something in my pipeline that is different from the rest of my group. 
-## I have a summary of what things each group member changed from our pipeline in output in GroupProject_Summary.csv 
 
-## In the coverage script, 05_coverage.sh, I made a change to a bowtie2 parameter. I added the --very-fast parameter. I also changed it so that my output contained my intials RGA. They now end with *_RGA.with_cov.tsv. For example, SRR31654305_RGA.with_cov.tsv 
+## 05_coverage.sh
 
-## This script will map clean reads to contigs, count reads per gene, calculate TPM per gene, and merge the coverage metrics with the annotation files.
+### And now for the final step were we do coverage. This is the only script where I changed something in my pipeline that is different from the rest of my group. 
+### I have a summary of what things each group member changed from our pipeline in output in GroupProject_Summary.csv 
+
+### In the coverage script, 05_coverage.sh, I made a change to a bowtie2 parameter. I added the --very-fast parameter. I also changed it so that my output contained my intials RGA. They now end with *_RGA.with_cov.tsv. For example, SRR31654305_RGA.with_cov.tsv 
+
+### This script will map clean reads to contigs, count reads per gene, calculate TPM per gene, and merge the coverage metrics with the annotation files.
 
 ```
 nano 05_coverage.sh
 ```
 
-## Here is the contents of 05_coverage.sh
+### Here is the contents of 05_coverage.sh
 
 ```
 #!/bin/bash
@@ -492,7 +497,9 @@ echo "  [done] ${joined}"
 done
 ```
 
-## Since the output files I want are still in scratch space (scr10), I navigated there to copy the files I want and move them to my groupProject/output directory 
+## Output
+
+### Since the output files I want are still in scratch space (scr10), I navigated there to copy the files I want and move them to my groupProject/output directory 
 
 ```
 cd
@@ -504,10 +511,12 @@ cp output/* ~/BIOCOMPUTING/groupProject/output
 cd 
 cd ~/BIOCOMPUTING/groupProject/
 ```
-## So now all of my output files are all in one place and ready to push to github!!!
-## In my output folder, I have all my *_RGA.with_cov.tsv, a summary table for the changes my group members made called GroupProject_Summary.csv, and a summary table for information about each accession number we used called GroupProject_Summary.csv. I am also going to copy my README there so it is easier to find. 
+### So now all of my output files are all in one place and ready to push to github!!!
+### In my output folder, I have all my *_RGA.with_cov.tsv, a summary table for the changes my group members made called GroupProject_Summary.csv, and a summary table for information about each accession number we used called GroupProject_Summary.csv. I am also going to copy my README there so it is easier to find. 
 
-## To clean up my scripts folder since I had 2 scripts that made scripts, I moved the resulting scripts into an annotation_slurm folder or an assemble_slurm folder. 
+## Optional Main Directory Cleanup
+
+### To clean up my scripts folder since I had 2 scripts that made scripts, I moved the resulting scripts into an annotation_slurm folder or an assemble_slurm folder. 
 
 ```
 cd scripts
